@@ -18,7 +18,7 @@ log_prefix="-- [$(basename $0)]"
 
 echo "$log_prefix downloading excludelist from GitHub"
 url="https://raw.githubusercontent.com/probonopd/AppImages/master/excludelist"
-blacklisted=($(wget --quiet "$url" -O - | sort | uniq | grep -v "^#.*" | grep "[^-\s]"))
+blacklisted=($(wget --no-check-certificate  --quiet "$url" -O - | sort | uniq | grep -v "^#.*" | grep "[^-\s]"))
 
 # sanity check
 if [ "$blacklisted" == "" ]; then
